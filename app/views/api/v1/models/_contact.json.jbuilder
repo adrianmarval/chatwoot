@@ -1,4 +1,7 @@
-json.additional_attributes resource.additional_attributes
+contact_attrs = resource.additional_attributes
+contact_attrs = contact_attrs.except('social_profiles', 'social_telegram_user_name', 'screen_name') unless Current.account_user&.administrator?
+
+json.additional_attributes contact_attrs
 json.availability_status resource.availability_status
 json.email resource.email
 json.id resource.id
