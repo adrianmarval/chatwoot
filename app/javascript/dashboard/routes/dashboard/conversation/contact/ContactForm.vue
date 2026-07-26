@@ -400,7 +400,7 @@ export default {
       :placeholder="$t('CONTACT_FORM.FORM.CITY.PLACEHOLDER')"
     />
 
-    <div class="w-full">
+    <!-- <div class="w-full">
       <label>{{ $t('CONTACTS_PAGE.LIST.TABLE_HEADER.SOCIAL_PROFILES') }}</label>
       <div
         v-for="socialProfile in socialProfileKeys"
@@ -418,7 +418,7 @@ export default {
           type="text"
         />
       </div>
-    </div>
+    </div> -->
     <div class="flex flex-row justify-start w-full gap-2 px-0 py-2">
       <NextButton
         type="submit"
