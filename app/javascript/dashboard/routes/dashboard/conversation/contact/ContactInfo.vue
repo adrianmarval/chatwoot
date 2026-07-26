@@ -289,7 +289,7 @@ export default {
             emoji="🌍"
             :title="$t('CONTACT_PANEL.LOCATION')"
           />
-          <SocialIcons :social-profiles="socialProfiles" />
+          <SocialIcons v-if="isAdmin" :social-profiles="socialProfiles" />
         </div>
       </div>
       <div class="flex items-center w-full mt-0.5 gap-2">
