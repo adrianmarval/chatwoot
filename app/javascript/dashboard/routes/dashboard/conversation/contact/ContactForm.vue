@@ -6,6 +6,7 @@ import {
 } from 'shared/helpers/CustomErrors';
 import { required, email } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
+import { useAdmin } from 'dashboard/composables/useAdmin';
 import countries from 'shared/constants/countries.js';
 import { isPhoneNumberValid } from 'shared/helpers/Validators';
 import parsePhoneNumber from 'libphonenumber-js';
@@ -35,7 +36,8 @@ export default {
   },
   emits: ['cancel', 'success'],
   setup() {
-    return { v$: useVuelidate() };
+    const { isAdmin } = useAdmin();
+    return { isAdmin, v$: useVuelidate() };
   },
   data() {
     return {
@@ -400,7 +402,7 @@ export default {
       :placeholder="$t('CONTACT_FORM.FORM.CITY.PLACEHOLDER')"
     />
 
-    <!-- <div class="w-full">
+    <div v-if="isAdmin" class="w-full">
       <label>{{ $t('CONTACTS_PAGE.LIST.TABLE_HEADER.SOCIAL_PROFILES') }}</label>
       <div
         v-for="socialProfile in socialProfileKeys"
@@ -418,7 +420,7 @@ export default {
           type="text"
         />
       </div>
-    </div> -->
+    </div>
     <div class="flex flex-row justify-start w-full gap-2 px-0 py-2">
       <NextButton
         type="submit"
